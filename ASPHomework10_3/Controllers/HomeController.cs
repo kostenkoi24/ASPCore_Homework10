@@ -1,4 +1,4 @@
-﻿using ASPHomework10_1.Models;
+﻿using ASPHomework10_3.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -7,7 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ASPHomework10_1.Controllers
+namespace ASPHomework10_3.Controllers
 {
     public class HomeController : Controller
     {
@@ -20,9 +20,7 @@ namespace ASPHomework10_1.Controllers
 
         public IActionResult Index()
         {
-
-            
-
+            _logger.LogError(new NullReferenceException(), "My Logged exception from Index method");
             return View();
         }
 
@@ -36,5 +34,8 @@ namespace ASPHomework10_1.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+
+
     }
 }

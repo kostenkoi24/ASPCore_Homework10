@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ASPHomework10_1
+namespace ASPHomework10_2
 {
     public class Program
     {
@@ -18,11 +18,11 @@ namespace ASPHomework10_1
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .ConfigureAppConfiguration(config =>
-                {
-                    config.AddJsonFile("config.json", optional: true, reloadOnChange: true);                  
+            .ConfigureAppConfiguration(builder =>
+            {
+                builder.AddJsonFile("appsettings.json", false, true);
             })
-                .ConfigureWebHostDefaults(webBuilder =>
+            .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
                 });

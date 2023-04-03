@@ -1,13 +1,14 @@
-using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ASPHomework10_1
+namespace ASPHomework10_3
 {
     public class Program
     {
@@ -18,10 +19,8 @@ namespace ASPHomework10_1
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .ConfigureAppConfiguration(config =>
-                {
-                    config.AddJsonFile("config.json", optional: true, reloadOnChange: true);                  
-            })
+                .ConfigureLogging(log => log.AddFile($@"{Directory.GetCurrentDirectory()}\Logs\log.txt"))
+                //.ConfigureLogging(builder => builder.AddSeq()) //Завдання 4
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
